@@ -17,10 +17,20 @@ To perform 8-bit arithmetic operations such as addition, subtraction, multiplica
 5.	Store the carry (if any) in 41H.
 
 ## Program:
-
+```
+MOV A,30H;
+ADD A,31H;
+MOV 40H,A;
+JNC NEXT;
+MOV 41H,#01H;
+SJMP END_PROGRAM;
+NEXT:MOV 41H,#00H;
+END_PROGRAM:NOP;
+END
+```
 
 ## Output:
-   
+
 ## For Subtraction:
 1.	Load the first number from memory location 30H into register A.
 2.	Load the second number from memory location 31H into register B.
@@ -28,7 +38,18 @@ To perform 8-bit arithmetic operations such as addition, subtraction, multiplica
 4.	Store the result in memory location 40H.
 
 ## Program:
-
+```
+  ORG 0000H
+  MOV A,30H
+  SUBB A,31H
+  MOV 40H,A
+  JNC NEXT 
+  MOV 41H,#01H;
+  SJMP END_PROGRAM;
+  NEXT:MOV 41H,#00H;
+  END_PROGRAM:NOP;
+  END
+```
 
 ## Output:
 
@@ -40,7 +61,15 @@ To perform 8-bit arithmetic operations such as addition, subtraction, multiplica
 5.	Store the higher byte of the result in memory location 41H.
 
 ## Program:
-
+```
+ORG 0000H
+MOV A, 30H 
+MOV B, 31H
+MUL AB
+MOV 40H, A 
+MOV 41H, B
+END
+```
 
 ## Output:
 
@@ -53,7 +82,15 @@ To perform 8-bit arithmetic operations such as addition, subtraction, multiplica
 
 
 ## Program:
-
+```
+ORG 0000H
+MOV A, 30H
+MOV B, 31H
+DIV AB
+MOV 40H, A
+MOV 41H, B 
+END
+```
 
 ## Output:
 
